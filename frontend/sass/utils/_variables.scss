@@ -1,0 +1,6 @@
+$primary-color: #525659;
+$secondary-color: #d1515a;
+$tertiary-color: #091f43;
+
+$lightened-primary: lighten($primary-color, 5%);
+$lightened-tertiary: lighten($tertiary-color, 5%);
