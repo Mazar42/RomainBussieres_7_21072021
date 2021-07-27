@@ -1,19 +1,11 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');
 const cors =require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
 
-const saucesRoutes = require('./routes/sauces');
+const postsRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
-
-//connect to MongoDB cluster
-mongoose.connect(process.env.DB_URL,
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
 
@@ -29,9 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
-app.use('/images', express.static(path.join(__dirname, 'images')))
+app.use('/media', express.static(path.join(__dirname, 'media')))
 
-app.use('/api/sauces', saucesRoutes);
+app.use('/api/posts', postsRoutes);
 app.use('/api/auth', userRoutes);
 
 
