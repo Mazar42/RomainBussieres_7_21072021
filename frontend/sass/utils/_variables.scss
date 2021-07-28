@@ -1,6 +1,8 @@
 $primary-color: #525659;
 $secondary-color: #d1515a;
-$tertiary-color: #091f43;
+$tertiary-color: #012242;
 
-$lightened-primary: lighten($primary-color, 5%);
-$lightened-tertiary: lighten($tertiary-color, 5%);
+$lightened-primary: lighten($primary-color, 40%);
+$lightened-tertiary: lighten($tertiary-color, 15%);
+
+$even-lighter-tertiary: lighten($tertiary-color, 30%)

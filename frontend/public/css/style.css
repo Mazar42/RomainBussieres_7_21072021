@@ -45,63 +45,80 @@ td, th {
 }
 
 /* base imports*/
-/*components imports*/
-/*Layout imports*/
-header {
-  background-color: #525659;
-  padding: 10px;
-  justify-content: space-between;
-}
-header #logo {
-  width: 50%;
+* {
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
-@media all and (min-width: 950px) {
-  header #logo {
-    width: 20%;
-  }
-  header nav li {
-    font-size: 1.5rem;
-  }
-  header nav li .desktop-only {
-    display: initial;
-    margin-left: 10px;
-  }
+p {
+  font-size: 1em;
 }
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  background-color: #525659;
-  color: white;
+
+body {
+  background-color: #012242;
 }
-nav li {
+
+/*components imports*/
+.signin-btn {
+  font-size: 1.4rem;
+  justify-content: center;
   display: flex;
   padding: 10px;
+  background-color: #02498d;
+  border: none;
+  width: 100%;
+  color: white;
+  margin: auto;
 }
-nav li:hover {
+.signin-btn:hover {
   cursor: pointer;
+  background-color: #0370d9;
 }
-nav li i {
+.signin-btn i {
   margin-right: 10px;
 }
 
-@media all and (min-width: 950px) {
-  nav li {
-    font-size: 1.5rem;
-  }
+.signup-btn {
+  font-size: 1.4rem;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  background-color: #012242;
+  border: none;
+  width: 10%;
+  color: white;
+  margin: auto;
 }
-/*Pages imports*/
-body {
-  background-image: url(../../public/pictures/icon.png);
-  background-repeat: no-repeat;
+.signup-btn:hover {
+  color: #525659;
+  cursor: pointer;
+}
+.signup-btn i {
+  margin-right: 10px;
 }
 
-@media all and (min-width: 950px) {
-  body {
-    background-image: url(../../public/pictures/icon.png);
-    background-repeat: repeat-y;
-    background-position: center;
-  }
+/*Layout imports*/
+nav {
+  margin: auto;
+  width: 80%;
+}
+
+/*Pages imports*/
+.welcome {
+  background-color: #012242;
+  padding: 40px;
+  justify-content: space-between;
+  height: 100%;
+}
+.welcome #logo {
+  width: 90%;
+  margin: auto;
+}
+.welcome form {
+  margin: auto;
+}
+.welcome .id-field {
+  width: 100%;
+  height: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */

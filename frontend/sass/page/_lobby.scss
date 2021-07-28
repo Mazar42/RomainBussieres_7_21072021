@@ -1,14 +1,21 @@
-body{
-    background-image:url(../../public/pictures/icon.png) ;
-    background-repeat: no-repeat;
-}
+.welcome {
+    background-color: $tertiary-color;
+    padding: 40px;
+    justify-content: space-between;
+    height: 100%;
 
-@media all and (min-width : 950px){
 
-    body{
-        background-image:url(../../public/pictures/icon.png) ;
-        background-repeat:repeat-y;
-        background-position: center;
+    #logo {
+        width: 90%;
+        margin: auto;
     }
 
+    form{
+        margin: auto;
+    }
+
+    .id-field{
+        width: 100%;
+        height: 50px;
+    }
 }

@@ -1,0 +1,41 @@
+.signin-btn{
+    font-size: 1.4rem;
+    justify-content:center;
+    display: flex;
+    padding: 10px;
+    background-color: $lightened-tertiary;
+    border: none;
+    width: 100%;
+    color: white;
+    margin: auto;
+
+    &:hover{
+        cursor: pointer;
+        background-color: $even-lighter-tertiary;
+    }
+
+    i{
+        margin-right: 10px;
+    }
+}
+
+.signup-btn{
+    font-size: 1.4rem;
+    justify-content:center;
+    display: flex;
+    padding: 10px;
+    background-color: $tertiary-color;
+    border: none;
+    width: 10%;
+    color: white;
+    margin: auto;
+
+    &:hover{
+        color: $primary-color;
+        cursor: pointer;
+    }
+
+    i{
+        margin-right: 10px;
+    }
+}
