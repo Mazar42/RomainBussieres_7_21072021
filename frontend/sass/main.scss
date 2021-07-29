@@ -1,0 +1,25 @@
+/* utils imports*/
+
+@import "./utils/reset.scss";
+@import "./utils/variables";
+
+/* base imports*/
+
+@import "./base/fonts";
+@import "./base/text-styles";
+@import "./base/body";
+
+/*components imports*/
+
+@import "./components/buttons";
+
+/*Layout imports*/
+
+@import "./layout/header";
+@import "./layout/nav";
+@import "./layout/posts";
+
+/*Pages imports*/
+
+@import "./page/lobby";
+@import "./page/wall";

@@ -1,0 +1,33 @@
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    background-color: $tertiary-color;
+    margin-bottom: 30px;
+    max-height: 150;
+    justify-content: space-evenly;
+
+
+    .logo {
+        width: 40%;
+        margin: 10px;
+    }
+
+}
+
+
+@media all and (min-width : 950px){
+    header {
+        position: sticky;
+        background-color: $tertiary-color;
+        justify-content: space-between;
+        border-bottom: $lightened-tertiary solid 10px;
+    
+        .logo {
+            max-width: 250px;
+            margin: auto;
+            
+        } 
+    }
+}
