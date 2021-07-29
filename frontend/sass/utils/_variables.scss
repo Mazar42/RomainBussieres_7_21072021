@@ -2,7 +2,11 @@ $primary-color: #525659;
 $secondary-color: #d1515a;
 $tertiary-color: #012242;
 
-$lightened-primary: lighten($primary-color, 40%);
+$lightened-primary: lighten($primary-color, 10%);
+$lightened-secondary: lighten($secondary-color, 5%);
 $lightened-tertiary: lighten($tertiary-color, 15%);
 
-$even-lighter-tertiary: lighten($tertiary-color, 30%)
+$even-lighter-tertiary: lighten($tertiary-color, 30%);
+$even-lighter-secondary: lighten($secondary-color, 30%);
+
+$darker-tertiary: darken($tertiary-color, 5%)
