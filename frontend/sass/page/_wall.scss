@@ -104,8 +104,9 @@
 
 @media all and (min-width : 950px){
     .post-window{
+        display: flex;
         margin: auto;
-        width: 40%;
+        width: 70%;
     }
 
 }

@@ -197,6 +197,7 @@ header .logo {
     background-color: #012242;
     justify-content: space-between;
     border-bottom: #02498d solid 10px;
+    max-height: 100px;
   }
   header .logo {
     max-width: 250px;
@@ -237,8 +238,8 @@ nav ul li:active {
   nav ul li {
     display: flex;
     font-size: 1.5rem;
-    padding-top: 50px;
-    padding-bottom: 60px;
+    padding-top: 30px;
+    margin-top: -10px;
     transition: border-color 250ms;
   }
   nav ul li i {
@@ -365,8 +366,9 @@ nav ul li:active {
 
 @media all and (min-width: 950px) {
   .post-window {
+    display: flex;
     margin: auto;
-    width: 40%;
+    width: 70%;
   }
 }
 
