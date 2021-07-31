@@ -1,3 +1,5 @@
+// lobby buttons
+
 .signin-btn{
     font-size: 1rem;
     justify-content:center;
@@ -45,6 +47,10 @@
     }
 }
 
+//---------wall buttons---------
+
+//post button
+
 .btnstyle-post{
     border-radius: 100px;
     background: $secondary-color;
@@ -79,6 +85,8 @@
         }
 }
 
+    //comment button
+
 .btnstyle-comment{
     border-radius: 100px;
     background: $primary-color;
@@ -111,6 +119,33 @@
             z-index: -1;
             transition: opacity 200ms;
         }
+}
+
+    //show comment chevron
+
+.comment-dropdown-button{
+    
+    background:none;
+    border:none;
+
+    &:hover{
+        cursor: pointer;
+    }   
+}
+
+.rotate {
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+  
+.icon-rotate {
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    display: inline-block;
 }
 
 @media all and (min-width : 950px){

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +11,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <title>Document</title>
+    <title>Mon espace</title>
 </head>
+
 <body>
 
     <header>
@@ -20,12 +22,12 @@
         </div>
         <nav>
             <ul class="icons">
-                <li><i class="far fa-user"></i>
+                <a href="./profile.html"><li><i class="far fa-user"></i>
                     <div>Mon profil</div>
-                </li>
-                <li><i class="fas fa-sign-out-alt"></i>
+                </li></a>
+                <a href="../index.html"><li><i class="fas fa-sign-out-alt"></i>
                     <div>Déconnexion</div>
-                </li>
+                </li></a>
             </ul>
         </nav>
     </header>
@@ -35,36 +37,41 @@
             <figure class="post-card">
                 <div class="post-info">Le 27/07/2021 à 08:40, User a posté :</div>
                 <div class="post-image">
-                    <img src="../pictures/Carcosa.png" alt="img">
+                    <img src="../pictures/Picture1.jpg" alt="img">
                 </div>
                 <figcaption>
-                        <div class="post-text">
-                            <h3>Titre du post</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae non accusamus autem quia, tempora dolorum consequuntur repellat quasi. Eum placeat modi iusto aliquid velit quos odio suscipit quam maxime accusantium!</p>
-                        </div>
+                    <div class="post-text">
+                        <h3>Titre du post</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae non accusamus autem
+                            quia, tempora dolorum consequuntur repellat quasi. Eum placeat modi iusto aliquid velit quos
+                            odio suscipit quam maxime accusantium!</p>
+                    </div>
                 </figcaption>
                 <div class="comments">
                     <div class="comments-title">
                         <h4>Commentaires</h4>
-                        <i class="fas fa-chevron-down"></i>
+                        <div class="comment-dropdown-button"><i class="fas fa-chevron-down icon-rotate"></i></div>
                     </div>
-                    <div class="comment-container">
+                    <div class="comment-container dropdown">
                         <div class="comment-card">
                             <p>User a commenté (20/07/2021): </p>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi, accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus
+                                reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi,
+                                accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
                         </div>
                         <div class="comment-card">
                             <p>User a commenté (20/07/2021): </p>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi, accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus
+                                reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi,
+                                accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
                         </div>
                     </div>
-                    <div class="comment-btn">
-                        <button class="btnstyle-comment"
-                        type="button">
+                </div>
+                <div class="comment-btn">
+                    <button class="btnstyle-comment" type="button">
                         Commenter
                         <span class="btn-hover"></span>
-                        </button> 
-                    </div>     
+                    </button>
                 </div>
             </figure>
         </div>
@@ -77,32 +84,37 @@
                 <figcaption>
                     <div class="post-text">
                         <h3>Titre du post</h3>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae non accusamus autem quia, tempora dolorum consequuntur repellat quasi. Eum placeat modi iusto aliquid velit quos odio suscipit quam maxime accusantium!</p>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae non accusamus autem
+                            quia, tempora dolorum consequuntur repellat quasi. Eum placeat modi iusto aliquid velit quos
+                            odio suscipit quam maxime accusantium!</p>
                     </div>
-            </figcaption>
-            <div class="comments">
-                <div class="comments-title">
-                    <h4>Commentaires</h4>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="comment-container">
-                    <div class="comment-card">
-                        <p>User a commenté (20/07/2021): </p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi, accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                </figcaption>
+                <div class="comments">
+                    <div class="comments-title">
+                        <h4>Commentaires</h4>
+                        <div class="comment-dropdown-button"><i class="fas fa-chevron-down icon-rotate"></i></div>
                     </div>
-                    <div class="comment-card">
-                        <p>User a commenté (20/07/2021): </p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi, accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                    <div class="comment-container dropdown">
+                        <div class="comment-card">
+                            <p>User a commenté (20/07/2021): </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus
+                                reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi,
+                                accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                        </div>
+                        <div class="comment-card">
+                            <p>User a commenté (20/07/2021): </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus
+                                reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi,
+                                accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="comment-btn">
-                    <button class="btnstyle-comment"
-                    type="button">
-                    Commenter
-                    <span class="btn-hover"></span>
-                    </button> 
+                    <button class="btnstyle-comment" type="button">
+                        Commenter
+                        <span class="btn-hover"></span>
+                    </button>
                 </div>
-            </div>
             </figure>
         </div>
 
@@ -112,43 +124,53 @@
                     <video src="../pictures/IMG_1572.MOV" controls></video>
                 </div>
                 <figcaption>
-                        <div class="post-text">
-                            <h3>Titre du post</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quam magnam nisi vitae iste enim possimus similique optio, deserunt itaque autem, molestiae totam iure qui perferendis quos aut obcaecati consequatur!</p>
-                        </div>
+                    <div class="post-text">
+                        <h3>Titre du post</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quam magnam nisi vitae iste
+                            enim possimus similique optio, deserunt itaque autem, molestiae totam iure qui perferendis
+                            quos aut obcaecati consequatur!</p>
+                    </div>
                 </figcaption>
                 <div class="comments">
                     <div class="comments-title">
                         <h4>Commentaires</h4>
-                        <i class="fas fa-chevron-down"></i>
+                        <div class="comment-dropdown-button"><i class="fas fa-chevron-down icon-rotate"></i></div>
                     </div>
-                    <div class="comment-container">
+                    <div class="comment-container dropdown">
                         <div class="comment-card">
-                            <p>User a commenté : </p>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi, accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                            <p>User a commenté (20/07/2021): </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus
+                                reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi,
+                                accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
+                        </div>
+                        <div class="comment-card">
+                            <p>User a commenté (20/07/2021): </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse consequuntur voluptatibus
+                                reiciendis ad optio asperiores provident tempore reprehenderit architecto nihil nisi,
+                                accusamus maxime. Nostrum excepturi ad dolorum non, id saepe.</p>
                         </div>
                     </div>
-                    <div class="comment-btn">
-                        <button class="btnstyle-comment"
-                        type="button">
+                </div>
+                <div class="comment-btn">
+                    <button class="btnstyle-comment" type="button">
                         Commenter
                         <span class="btn-hover"></span>
-                        </button> 
-                    </div>
+                    </button>
                 </div>
             </figure>
         </div>
-           
+
     </section>
 
     <div class="go-to-post">
-        <button class="btnstyle-post"
-            type="button">
+        <a href="./create-post.html"><button class="btnstyle-post" type="button">
             Publier !
             <span class="btn-hover"></span>
-        </button>
+        </button></a>
     </div>
 
     <script src="https://kit.fontawesome.com/ec342d9b50.js" crossorigin="anonymous"></script>
+    <script src="../scripts/wall.js"></script>
 </body>
+
 </html>
