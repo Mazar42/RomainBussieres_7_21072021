@@ -9,7 +9,6 @@ for (button of commentToggleButtons){
     // rotate chevron  
     const rotate = () => {
 
-            console.log(chevronIcon.classList);
         if (chevronIcon.classList.contains('rotate')){
             chevronIcon.classList.remove('rotate');
         }
