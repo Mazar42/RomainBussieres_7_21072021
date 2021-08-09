@@ -223,6 +223,62 @@ form {
   box-shadow: -6px 6px 6px 0px rgba(0, 0, 0, 0.247);
 }
 
+.btnstyle-profile-left {
+  display: flex;
+  justify-content: center;
+  border-bottom-left-radius: 100px;
+  border-top-left-radius: 100px;
+  width: 80%;
+  border: #f1cacd solid;
+  background: #525659;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  padding: 15px 20px;
+  border-style: hidden;
+  cursor: pointer;
+  box-shadow: -6px 6px 13px 0px rgba(0, 0, 0, 0.247);
+  position: relative;
+  z-index: 0;
+}
+.btnstyle-profile-left:hover {
+  box-shadow: -6px 6px 6px 0px rgba(0, 0, 0, 0.247);
+}
+.btnstyle-profile-left:hover .btn-hover {
+  opacity: 1;
+}
+.btnstyle-profile-left p {
+  display: none;
+}
+
+.btnstyle-profile-right {
+  display: flex;
+  justify-content: center;
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 80%;
+  border: #f1cacd solid;
+  background: #d1515a;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  padding: 15px 20px;
+  border-style: hidden;
+  cursor: pointer;
+  box-shadow: -6px 6px 13px 0px rgba(0, 0, 0, 0.247);
+  position: relative;
+  z-index: 0;
+}
+.btnstyle-profile-right:hover {
+  box-shadow: -6px 6px 6px 0px rgba(0, 0, 0, 0.247);
+}
+.btnstyle-profile-right:hover .btn-hover {
+  opacity: 1;
+}
+.btnstyle-profile-right p {
+  display: none;
+}
+
 @media all and (min-width: 950px) {
   .signin-btn {
     font-size: 1.4rem;
@@ -230,6 +286,16 @@ form {
 
   .signup-btn {
     font-size: 1.4rem;
+  }
+
+  .btnstyle-profile-left p {
+    display: initial;
+    margin-left: 10px;
+  }
+
+  .btnstyle-profile-right p {
+    display: initial;
+    margin-left: 10px;
   }
 }
 /*Layout imports*/
@@ -481,6 +547,14 @@ nav ul li:active {
 .write-comment {
   width: 80%;
   margin: auto;
+}
+
+.profile-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-btns .comment-btn {
+  width: 50%;
 }
 
 /*# sourceMappingURL=style.css.map */

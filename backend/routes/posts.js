@@ -8,10 +8,15 @@ const postCtrl = require('../controllers/posts');
 
 // all routes for users posts
 
-router.get('/', auth, postCtrl.getAllPosts);
+router.get('/wall', auth, postCtrl.getAllPosts);
 router.post('/', auth, multer, postCtrl.createPost);
-router.get('/:id', auth, postCtrl.getOnePost);
-router.put('/:id', auth, multer, postCtrl.modifyPost);
-router.delete('/:id', auth, postCtrl.deletePost);
+router.put('/:id/update', auth, multer, postCtrl.updatePost);
+router.delete('/:id/destroy', auth, postCtrl.deletePost);
+// comments
+router.get('/:id/comments', auth, postCtrl.getOnePost);
+router.post('/:id/comments', auth, postCtrl.createComment);
+router.delete('/:id/comments/destroy', auth, postCtrl.deleteComment);
+
+
 
 module.exports = router;

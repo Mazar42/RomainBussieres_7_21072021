@@ -4,6 +4,8 @@ const User = require('../models/User');
 const passwordValidator = require('password-validator');
 require('dotenv').config();
 
+// user access
+
 exports.signup = (req, res, next) => {
   // Create a schema
   var schema = new passwordValidator();
@@ -56,4 +58,24 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
+};
+
+// handle user profile
+
+exports.getUser = (req, res, next) => {
+  User.findOne({_id: res.params.id})
+  .then(() => res.status(200).json({message: 'Profile acquired'}))
+  .catch(error => res.status(400).json({error}));
+}
+
+exports.deleteProfile = (req, res, next) => {
+  User.deleteOne({_id: req.params.id})
+      .then(() => res.status(200).json({message: 'Profile deleted'}))
+      .catch(error => res.status(400).json({error}));
+    };
+
+exports.updateProfile = (req, res, next) => {
+  User.updateOne({ _id: req.params.id }, { ...usertObject, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Updated profile!' }))
+    .catch(error => res.status(400).json({ error }));
 };

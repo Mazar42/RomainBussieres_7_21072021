@@ -175,6 +175,68 @@
         }  
 }
 
+//profile buttons
+
+.btnstyle-profile-left{
+    display: flex;
+    justify-content: center;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+    width: 80%;
+    border: $even-lighter-secondary solid;
+    background: $primary-color;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    padding: 15px 20px;
+    border-style: hidden;
+    cursor: pointer;
+    box-shadow: -6px 6px 13px 0px rgba(0, 0, 0, 0.247);
+    position: relative;
+    z-index: 0;
+
+        &:hover{
+            box-shadow: -6px 6px 6px 0px rgba(0, 0, 0, 0.247);
+            & .btn-hover{
+                opacity: 1;
+            }
+        }
+    p{
+        display: none
+    };
+}
+
+.btnstyle-profile-right{
+    display: flex;
+    justify-content: center;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    width: 80%;
+    border: $even-lighter-secondary solid;
+    background: $secondary-color;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    padding: 15px 20px;
+    border-style: hidden;
+    cursor: pointer;
+    box-shadow: -6px 6px 13px 0px rgba(0, 0, 0, 0.247);
+    position: relative;
+    z-index: 0;
+
+        &:hover{
+            box-shadow: -6px 6px 6px 0px rgba(0, 0, 0, 0.247);
+            & .btn-hover{
+                opacity: 1;
+            }
+        }
+
+        p{
+            display: none;
+        }
+}
+
+
 
 @media all and (min-width : 950px){
 
@@ -184,5 +246,19 @@
     
     .signup-btn{
         font-size: 1.4rem;
-}
+    }
+
+    .btnstyle-profile-left{
+        p{
+            display: initial;
+            margin-left: 10px;
+        }
+    }
+
+    .btnstyle-profile-right{
+        p{
+            display: initial;
+            margin-left: 10px;
+        }
+    }
 }
