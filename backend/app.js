@@ -12,6 +12,7 @@ const app = express();
 
 // connection.execute(`INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)`, ['romain', 'bussieres', 'romain.bussieres@live.fr', 'P@sser123'])
 
+
 //logic to avoid getting stuck by CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,7 +29,6 @@ app.use('/media', express.static(path.join(__dirname, 'media')))
 
 app.use('/api/posts', postsRoutes);
 app.use('/api/auth', userRoutes);
-
 
 // use cors package to avoid cors issues
 app.options('*', cors());

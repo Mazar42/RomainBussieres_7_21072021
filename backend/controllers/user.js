@@ -1,9 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const connection = require('../connection');
 const User = require('../models/User');
 const passwordValidator = require('password-validator');
 require('dotenv').config();
 
+//this is a work in progress, valid logics are commented --ok--
 // user access
 
 exports.signup = (req, res, next) => {
@@ -62,11 +64,13 @@ exports.login = (req, res, next) => {
 
 // handle user profile
 
-exports.getUser = (req, res, next) => {
-  User.findOne({_id: res.params.id})
-  .then(() => res.status(200).json({message: 'Profile acquired'}))
-  .catch(error => res.status(400).json({error}));
-}
+//get one profile according to id           --ok--
+exports.getProfile = (req, res) => {
+  connection.query('select * from users where id=?', [req.params.id], function (error, results) {
+     if (error) throw error;
+     res.end(JSON.stringify(results));
+   });
+};
 
 exports.deleteProfile = (req, res, next) => {
   User.deleteOne({_id: req.params.id})
