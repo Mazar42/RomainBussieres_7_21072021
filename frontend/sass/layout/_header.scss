@@ -23,6 +23,7 @@ header {
         background-color: $tertiary-color;
         justify-content: space-between;
         border-bottom: $lightened-tertiary solid 10px;
+        max-height: 100px;
     
         .logo {
             max-width: 250px;
