@@ -40,48 +40,51 @@ exports.signup = (req, res, next) => {
 
 
 exports.login = (req, res, next) => {
-  User.findOne({email: Buffer.from(req.body.email).toString('base64')})
-    .then(user => {
-      if (!user) {
-        return res.status(401).json({ error: 'Couldn\'t find user !' });
+  User.findOne(Buffer.from(req.body.email).toString('base64'), function (error, result, fields) {
+      if (error) {
+          return console.log(error);
       }
-      bcrypt.compare(req.body.password, user.password)
-        .then(valid => {
-          if (!valid) {
-            return res.status(401).json({ error: 'Wrong password !' });
-          }
-          res.status(200).json({
-            userId: user._id,
-            token: jwt.sign(
-              { userId: user._id },
-              process.env.TOKEN,
-              { expiresIn: '24h' }
-            )
-          });
-        })
-        .catch(error => res.status(500).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
+      if (result.length === 0) {
+          return res.status(401).json({ error: 'Utilisateur non trouvé!' });
+      }
+      bcrypt.compare(req.body.password, result[0].password)
+          .then(valid => {
+              if (!valid) {
+                  return res.status(401).json({ error: 'Mot de passe incorrect!' });
+              }
+              res.status(200).json({
+                  userId: result[0].user_id,
+                  token: jwt.sign({ userId: result[0].user_id },
+                      process.env.TOKEN, { expiresIn: '24h' }
+                  )
+              });
+          })
+          .catch(error => res.status(500).json({ error }))
+  })
 };
 
 // handle user profile
 
 //get one profile according to id           --ok--
 exports.getProfile = (req, res) => {
-  connection.query('select * from users where id=?', [req.params.id], function (error, results) {
-     if (error) throw error;
-     res.end(JSON.stringify(results));
-   });
+  User.getOne(req, (error, results) =>{
+    if (error) { res.status(400).json({error}) }
+    if (results) {res.end(JSON.stringify(results));}
+  })
 };
 
-exports.deleteProfile = (req, res, next) => {
-  User.deleteOne({_id: req.params.id})
-      .then(() => res.status(200).json({message: 'Profile deleted'}))
-      .catch(error => res.status(400).json({error}));
-    };
+// delete profile
+exports.deleteProfile = (req, res) => {
+  User.delete(req, (error, results) =>{
+    if (error) { res.status(400).json({error}) }
+    if (results) { res.status(200).json({mesage : 'Profile deleted !'})}
+  })
+};
 
+//update profile
 exports.updateProfile = (req, res, next) => {
-  User.updateOne({ _id: req.params.id }, { ...usertObject, _id: req.params.id })
-    .then(() => res.status(200).json({ message: 'Updated profile!' }))
-    .catch(error => res.status(400).json({ error }));
+  User.modify(req, (error, results) => {
+    if (error) { res.status(400).json({error}) }
+    if (results) { res.status(200).json({message: 'Profile updated!'})}
+  })
 };
