@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const postsRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
+const commentsRoutes = require('./routes/comments');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/media', express.static(path.join(__dirname, 'media')))
 
 app.use('/api/posts', postsRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/api/comments', commentsRoutes);
 
 // use cors package to avoid cors issues
 app.options('*', cors());

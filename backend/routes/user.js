@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../connection');
 
+const auth = require('../middleware/auth');
 const userCtrl = require('../controllers/user');
 
 // user access
@@ -9,8 +9,8 @@ router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 // handle user profile
-router.get('/profile/:id', userCtrl.getProfile);
-router.put('/update', userCtrl.updateProfile);
-router.delete('/destroy', userCtrl.deleteProfile);
+router.get('/profile/:id', auth, userCtrl.getProfile);
+router.put('/update', auth, userCtrl.updateProfile);
+router.delete('/destroy', auth, userCtrl.deleteProfile);
 
 module.exports = router;
