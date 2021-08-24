@@ -7,10 +7,34 @@ function reverseString(str) {
     return str.split("-").reverse().join("-");
 };
 
+function handleDeleteCommentButton(event) {
+    const token = localStorage.getItem('token');
+    const commentId = event.target.id.split('-').pop();
+
+    fetch(`http://localhost:3000/api/comments/${commentId}/destroy`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => location.reload())
+        .catch(error => console.error(error));
+}
+
+function showOrHideDeleteButtonOnComment(comment) {
+    const userId = localStorage.getItem('userId');
+    if (comment.user_id === parseInt(userId)) {
+        return `<button class="displayed-comment-action-btn" id="delete-comment-${ comment.id }" onclick="handleDeleteCommentButton(event)" >Supprimer</button>`
+    }
+    return `<p></p>`
+}
+
 const displayComments = (id) => {
 
     let commentSection = document.getElementById(`comment-section-${id}`);
-    console.log(commentSection);
+
     for (const comment of comments) {
         //convert time and date for comments
         let timeAndDate = comment.published_date;
@@ -19,15 +43,13 @@ const displayComments = (id) => {
         let time = splittedDate[1].split(".")[0];
 
         //display comments
-        console.log(comment.content);
         commentSection.innerHTML +=
             `<div class="comment-card">
                 <p>${comment.firstname} ${comment.lastname} a commenté le ${date} à ${time}: </p>
                 <p>${comment.content}</p>
-                <button class="displayed-comment-action-btn">Supprimer</button>
+                ${ showOrHideDeleteButtonOnComment(comment) } 
             </div>`
     }
-
 }
 
 
@@ -57,6 +79,13 @@ function validate(event) {
 let posts;
 let postSection = document.getElementById('posts-section');
 
+function showImageTagOrNot(post) {
+    if (post.image_url !== null) {
+        return `<img src="${post.image_url}">`
+    }
+    return `<p></p>`;
+}
+
 const fetchPosts = async() => {
     const token = localStorage.getItem('token')
     posts = await fetch('http://localhost:3000/api/posts/wall', { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
@@ -69,14 +98,12 @@ const fetchPosts = async() => {
 
         //Display posts
         let currentPostId = post.id;
-        console.log(currentPostId);
         comments = await fetch(`http://localhost:3000/api/posts/${currentPostId}/comments`, { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
-        if (post.image_url !== null) {
-            postSection.innerHTML += `<div class="post-window">
+        postSection.innerHTML += `<div class="post-window">
         <figure class="post-card">
         <div class="post-info">Le ${date} à ${time}, ${post.firstname} ${post.lastname} a posté :</div>
             <div class="post-image">
-            <img src="${post.image_url}">
+            ${ showImageTagOrNot(post) }
             </div>
             <figcaption>
                 <div class="post-text">
@@ -85,7 +112,7 @@ const fetchPosts = async() => {
                 </div>
             </figcaption>
             <div class="comment-btn">
-                <form id="submit-comment" onsubmit="return validate(event);">
+                <form  onsubmit="return validate(event);">
                 <input type="text" name="comment_post_id_${post.id}" class="comment-field" placeholder="Commentez..." required />
                 <button class="btnstyle-comment" type="submit" data-post="hello post" id="button-id-${post.id}">
                     <i class="fas fa-pencil-alt"></i>
@@ -104,41 +131,8 @@ const fetchPosts = async() => {
             </div>
         </figure>
         </div>`
-                // postComment();
-            displayComments(post.id);
-        } else {
-            postSection.innerHTML += `<div class="post-window">
-        <figure class="post-card">
-        <div class="post-info">Le ${date} à ${time}, ${post.firstname} ${post.lastname} a posté :</div>
-            <div class="post-image">
-            </div>
-            <figcaption>
-                <div class="post-text">
-                    <h3> ${post.title} </h3> 
-                    <p> ${post.content} </p>
-                </div>
-            </figcaption>
-            <div class="comment-btn">
-                <input type="text" name="search" class="comment-field" placeholder="Commentez..."/>
-                <button class="btnstyle-comment" type="button">
-                    <i class="fas fa-pencil-alt"></i>
-                    <span class="btn-hover"></span>
-                </button>
-            </div>
-            <div class="comments">
-                <div class="comments-title">
-                    <h4>Commentaires</h4>
-                    <div class="comment-dropdown-button"><i class="fas fa-chevron-down icon-rotate"></i></div>
-                </div>
-                <div class="comment-container dropdown" id="comment-section-${post.id}">
-                
-                </div>
-            </div>
-        </figure>
-        </div>`
-                // postComment();
-            displayComments();
-        }
+            // postComment();
+        displayComments(post.id);
 
         // Manage comments display
 
@@ -152,7 +146,6 @@ const fetchPosts = async() => {
 
             // rotate chevron  
             const rotate = () => {
-
                 if (chevronIcon.classList.contains('rotate')) {
                     chevronIcon.classList.remove('rotate');
                 } else {

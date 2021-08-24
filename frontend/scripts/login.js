@@ -38,6 +38,7 @@ const sendData = () => {
                 return
             }
             localStorage.setItem("token", data.token)
+            localStorage.setItem("userId", data.userId)
             window.location.href = './pages/wall.html';
         })
         .catch(error => console.error(error));
