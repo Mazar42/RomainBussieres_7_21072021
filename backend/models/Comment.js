@@ -8,8 +8,7 @@ class Comment {
         const decodedToken = jwt.verify(token, process.env.TOKEN);
         const userId = decodedToken.userId;
 
-        connection.execute(`INSERT INTO Comments (post_id, user_id, content, published_date) values (?, ?, ?, now());`,
-            [req.body.post_id, userId, req.body.content], callback)
+        connection.execute(`INSERT INTO Comments (post_id, user_id, content, published_date) values (?, ?, ?, now());`, [req.body.post_id, userId, req.body.content], callback)
     };
 
     static delete(req, callback) {
@@ -17,7 +16,9 @@ class Comment {
     };
 
     static getAllForPost(req, callback) {
-        connection.execute(`SELECT * FROM Comments WHERE post_id = ?`, [req.params.id], callback)
+        connection.execute(`SELECT Comments.content, Comments.id, Comments.published_date, Comments.user_id, Users.firstname, Users.lastname, Users.email FROM Comments 
+        INNER JOIN Users 
+        WHERE post_id = ? AND Comments.user_id = Users.id`, [req.params.id], callback)
     };
 
 }

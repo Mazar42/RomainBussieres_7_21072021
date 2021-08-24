@@ -9,7 +9,7 @@ router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 // handle user profile
-router.get('/profile/:id', auth, userCtrl.getProfile);
+router.get('/profile/', auth, userCtrl.getProfile);
 router.put('/update', auth, userCtrl.updateProfile);
 router.delete('/destroy', auth, userCtrl.deleteProfile);
 

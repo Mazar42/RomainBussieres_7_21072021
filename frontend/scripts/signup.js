@@ -1,40 +1,48 @@
-// create form object
-    
-//declare an object to hold the form data
-let formInfo ={}
+const signupForm = document.getElementById('signup-info');
 
-//extract data from page and fill object
-const sendData = async () =>{
-
-    //extract data
-    let name = document.getElementById('fname').value;
-    let surname = document.getElementById('lname').value;
-    let eMail = document.getElementById('email').value;
-    let passWord = document.getElementById('password').value;
-    //fill object
-    formInfo = {firstName: name, lastName: surname, email: eMail, password : passWord};
-    console.log(formInfo);
-    //send data
-    fetch('http://localhost:3000/api/auth/signup', {
-        method: 'post',
-        body: JSON.stringify(formInfo),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        let currentOrder = JSON.stringify(data.orderId)
-        localStorage.setItem('Order', currentOrder)
-        window.location.href = './confirmation-d-achat.html';
-    })
-    .catch(error => console.error(error));
-    
-}
-
-form.addEventListener('submit', function(e){
+signupForm.addEventListener('submit', function(e) {
     e.preventDefault();
     sendData();
-})
+});
 
+// declare an object to hold info
+
+let signupInfo = {};
+
+//extract data from input and fill created object with it
+
+const sendData = () => {
+
+    //extract provided intel
+
+    let firstName = document.getElementById('fname').value;
+    let lastName = document.getElementById('lname').value;
+    let userEmail = document.getElementById('email').value;
+    let userPassword = document.getElementById('password').value;
+
+    // fill object
+
+    signupInfo = { firstname: firstName, lastname: lastName, email: userEmail, password: userPassword };
+
+    // send credentials
+
+    console.log(signupInfo);
+
+    fetch('http://localhost:3000/api/auth/signup', {
+            method: 'POST',
+            body: JSON.stringify(signupInfo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error !== undefined) {
+                alert(data.error);
+                return;
+            }
+            return window.location.href = '../index.html';
+        })
+        .catch(error => console.error(error));
+
+};

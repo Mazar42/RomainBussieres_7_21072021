@@ -6,30 +6,15 @@ const multer = require('../middleware/multer-config');
 
 const postCtrl = require('../controllers/posts');
 
-// // all routes for users posts
-// router.get('/wall', auth, postCtrl.getAllPosts);
-// router.post('/', auth, multer, postCtrl.createPost);
-// router.put('/:id/update', auth, multer, postCtrl.updatePost);
-// router.delete('/:id/destroy', auth, postCtrl.deletePost);
-
-
-// // comments
-// router.get('/:id/comments', auth, postCtrl.getCommentsForPost); 
-
-
-// with no auth
 // all routes for users posts
-router.get('/wall', postCtrl.getAllPosts);
-router.post('/', multer, postCtrl.createPost);
-router.put('/:id/update', multer, postCtrl.updatePost);
-router.delete('/:id/destroy',postCtrl.deletePost);
+router.get('/wall', auth, postCtrl.getAllPosts);
+router.post('/', auth, multer, postCtrl.createPost);
+router.put('/:id/update', auth, multer, postCtrl.updatePost);
+router.delete('/:id/destroy', auth, postCtrl.deletePost);
 
 
 // comments
-router.get('/:id/comments', postCtrl.getCommentsForPost); 
-
-
-
+router.get('/:id/comments', auth, postCtrl.getCommentsForPost); 
 
 
 module.exports = router;

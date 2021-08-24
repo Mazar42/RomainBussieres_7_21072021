@@ -1,8 +1,8 @@
 const loginForm = document.getElementById('login-form');
 
-loginForm.addEventListener('submit', function (e){
+loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
-     sendData();
+    sendData();
 });
 
 // declare an object to hold login credentials
@@ -11,7 +11,7 @@ let loginCredentials = {};
 
 //extract data from input and fill created object with it
 
-const sendData = () =>{
+const sendData = () => {
 
     //extract provided intel
 
@@ -20,21 +20,27 @@ const sendData = () =>{
 
     // fill object
 
-    loginCredentials = {email: userId, password: userPassword};
+    loginCredentials = { email: userId, password: userPassword };
 
     // send credentials
 
     fetch('http://localhost:3000/api/auth/login', {
-        method: 'POST',
-        body: JSON.stringify(loginCredentials),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => localStorage.setItem("token", data.token))
-    .then(window.location.href = './pages/wall.html')
-    .catch(error => console.error(error));
+            method: 'POST',
+            body: JSON.stringify(loginCredentials),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.token === undefined) {
+                alert('Mauvais credentials');
+                return
+            }
+            localStorage.setItem("token", data.token)
+            window.location.href = './pages/wall.html';
+        })
+        .catch(error => console.error(error));
 
-    
+
 };
