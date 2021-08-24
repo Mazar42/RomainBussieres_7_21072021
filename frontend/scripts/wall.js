@@ -30,47 +30,29 @@ const displayComments = (id) => {
 
 }
 
-// //----Write new comment-----
 
-// let newComment = {};
+// Write new comment
+function validate(event) {
+    event.preventDefault();
 
-// const sendData =  () => {
+    const postId = event.submitter.id.split('-').pop();
+    const formData = new FormData(event.target);
+    const comment = formData.get(`comment_post_id_${ postId }`);
+    const commentObject = { post_id: postId, content: comment };
+    const token = localStorage.getItem('token')
 
-//     //extract provided text
-
-//     let commentContent = document.getElementById('comment-content').value;
-
-//     // fill object
-
-//     newComment = {post_id: currentPostId, content: commentContent};
-
-//     // send comment
-
-//     fetch('http://localhost:3000/api/auth/login', {
-//         method: 'POST',
-//         body: JSON.stringify(newComment),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log(data)
-//     })
-//     .catch(error => console.error(error));
-// };
-
-// const postComment = () => {
-//     const submitComment = document.getElementById('submit-comment');
-
-//     submitComment.addEventListener('submit', function (e){
-//         e.preventDefault();
-//          sendComment();
-//     });
-// }
-
-
-//API request
+    fetch('http://localhost:3000/api/comments', {
+            method: 'POST',
+            body: JSON.stringify(commentObject),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => location.reload())
+        .catch(error => console.error(error));
+}
 
 let posts;
 let postSection = document.getElementById('posts-section');
@@ -80,16 +62,12 @@ const fetchPosts = async() => {
     posts = await fetch('http://localhost:3000/api/posts/wall', { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
 
     for (const post of posts) {
-
-        //convert time and date for posts
-
         let timeAndDate = post.published_date;
         let splittedDate = timeAndDate.split("T");
         let date = reverseString(splittedDate[0]);
         let time = splittedDate[1].split(".")[0];
 
         //Display posts
-
         let currentPostId = post.id;
         console.log(currentPostId);
         comments = await fetch(`http://localhost:3000/api/posts/${currentPostId}/comments`, { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
@@ -107,9 +85,9 @@ const fetchPosts = async() => {
                 </div>
             </figcaption>
             <div class="comment-btn">
-                <form <!--id="submit-comment">-->
-                <input type="text" name="search" class="comment-field" placeholder="Commentez..."/>
-                <button class="btnstyle-comment" type="submit">
+                <form id="submit-comment" onsubmit="return validate(event);">
+                <input type="text" name="comment_post_id_${post.id}" class="comment-field" placeholder="Commentez..." required />
+                <button class="btnstyle-comment" type="submit" data-post="hello post" id="button-id-${post.id}">
                     <i class="fas fa-pencil-alt"></i>
                     <span class="btn-hover"></span>
                 </button>
