@@ -29,12 +29,18 @@
             border: solid $tertiary-color;
             cursor: pointer;
         }
+        
+        .post-image-upload{
+        background-color: red;
+        }
+
     }
 
     input{
         margin: 20px;
     }
 }
+
 
 .write-comment{
     width: 80%;

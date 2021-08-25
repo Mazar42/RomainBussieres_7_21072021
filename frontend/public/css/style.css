@@ -581,6 +581,9 @@ nav ul li:active {
   border: solid #012242;
   cursor: pointer;
 }
+.create-post-card .upload-file .post-image-upload {
+  background-color: red;
+}
 .create-post-card input {
   margin: 20px;
 }

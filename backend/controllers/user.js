@@ -52,7 +52,12 @@ exports.login = (req, res, next) => {
                     return res.status(401).json({ error: 'Wrong password!' });
                 }
                 res.status(200).json({
-                    userId: result[0].id,
+                    user: {
+                        id: result[0].id,
+                        firstName: result[0].firstname,
+                        lastName: result[0].lastname,
+                        isAdmin: result[0].is_admin
+                    },
                     token: jwt.sign({ userId: result[0].id },
                         process.env.TOKEN, { expiresIn: '24h' }
                     )

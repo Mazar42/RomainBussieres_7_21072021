@@ -37,8 +37,8 @@ const sendData = () => {
                 alert('Mauvais credentials');
                 return
             }
-            localStorage.setItem("token", data.token)
-            localStorage.setItem("userId", data.userId)
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
             window.location.href = './pages/wall.html';
         })
         .catch(error => console.error(error));

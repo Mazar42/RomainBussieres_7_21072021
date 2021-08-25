@@ -23,9 +23,24 @@ function handleDeleteCommentButton(event) {
         .catch(error => console.error(error));
 }
 
+function handleDeletePostButton(event) {
+    const token = localStorage.getItem('token');
+    const postId = event.target.id.split('-').pop();
+    fetch(`http://localhost:3000/api/posts/${postId}/destroy`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => location.reload())
+        .catch(error => console.error(error));
+}
+
 function showOrHideDeleteButtonOnComment(comment) {
-    const userId = localStorage.getItem('userId');
-    if (comment.user_id === parseInt(userId)) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (comment.user_id === parseInt(user.id) || user.isAdmin === 1) {
         return `<button class="displayed-comment-action-btn" id="delete-comment-${ comment.id }" onclick="handleDeleteCommentButton(event)" >Supprimer</button>`
     }
     return `<p></p>`
@@ -86,6 +101,14 @@ function showImageTagOrNot(post) {
     return `<p></p>`;
 }
 
+function showOrHideDeletePostButton(post) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (post.user_id === parseInt(user.id) || user.isAdmin === 1) {
+        return `<button class="displayed-comment-action-btn" id="delete-post-${ post.id }" onclick="handleDeletePostButton(event)"> Supprimer le post </button>`;
+    }
+    return `<p></p>`
+}
+
 const fetchPosts = async() => {
     const token = localStorage.getItem('token')
     posts = await fetch('http://localhost:3000/api/posts/wall', { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
@@ -101,7 +124,7 @@ const fetchPosts = async() => {
         comments = await fetch(`http://localhost:3000/api/posts/${currentPostId}/comments`, { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
         postSection.innerHTML += `<div class="post-window">
         <figure class="post-card">
-        <div class="post-info">Le ${date} à ${time}, ${post.firstname} ${post.lastname} a posté :</div>
+        <div class="post-info">Le ${date} à ${time}, ${post.firstname} ${post.lastname} a posté :  ${showOrHideDeletePostButton(post)}</div>
             <div class="post-image">
             ${ showImageTagOrNot(post) }
             </div>
