@@ -12,7 +12,8 @@ class User {
     };
 
     static delete(req, callback) {
-        connection.execute(`DELETE FROM Users WHERE id = ?`, [req.body.id], callback)
+        const userId = getUserId(req);
+        connection.execute(`DELETE FROM Users WHERE id = ?`, [userId], callback)
     };
 
     static modify(req, callback) {

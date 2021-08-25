@@ -26,17 +26,18 @@ const sendData = async () =>{
     }
     else{
     // send credentials
-    fetch('http://localhost:3000/api/posts', { headers: { 'Authorization': `Bearer ${token}` } }, {
+    fetch('http://localhost:3000/api/posts', {
         method: 'POST',
         body: JSON.stringify(postContent),
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        // window.location.href = './wall.html';
+        alert('Votre poste est en ligne !');
+        window.location.href = './wall.html';
     })
     .catch(error => console.error(error));
     }
