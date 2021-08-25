@@ -34,6 +34,7 @@ const destroyProfile = () => {
             alert("Votre profile a été supprimé, vous allez être redirigé vers la page d'accueil"),
             localStorage.removeItem('token'),
             localStorage.removeItem('userId'),
+            localStorage.removeItem('user'),
             window.location.href = '../index.html';    
         })
         .catch(error => console.error(error));
@@ -49,6 +50,7 @@ deleteProfileButton.addEventListener('click', function () { destroyProfile() });
 const LogOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    localStorage.removeItem('user');
     window.location.href = '../index.html';
 }
 

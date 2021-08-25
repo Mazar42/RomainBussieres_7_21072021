@@ -5,11 +5,11 @@ class Post {
     static insert(req, callback) {
         const userId = getUserId(req);
         const imageUrl = `${req.protocol}://${req.get('host')}/media/${req.file.filename}`
-        connection.execute(`INSERT INTO Posts (user_id, title, image_url, content, published_date) values (?, ?, ?, ?, now());`, [userId, req.body.title, imageUrl, req.body.content], callback)
+        connection.execute(`INSERT INTO posts (user_id, title, image_url, content, published_date) values (?, ?, ?, ?, now());`, [userId, req.body.title, imageUrl, req.body.content], callback)
     };
 
     static update(req, callback) {
-        connection.execute(`UPDATE Posts
+        connection.execute(`UPDATE posts
                             SET title = ?, image_url = ?, content = ?
                             WHERE id = ?`, [req.body.title, req.body.image_url, req.body.content, req.body.id], callback)
     };
@@ -23,13 +23,19 @@ class Post {
             // On vérifie si l'utilisateur est soit l'auteur du post soit un admin
             if (post.is_admin === 1 || post.user_id === userId) {
                 // il peut supprimer
-                connection.execute(`DELETE FROM Posts WHERE id = ?`, [req.params.id], callback)
+                connection.execute(`DELETE FROM posts WHERE id = ?`, [req.params.id], callback)
             }
         })
     };
 
     static getAll(callback) {
-        connection.execute(`SELECT Posts.title, Posts.image_url, Posts.content, Posts.published_date, Posts.id, Users.firstname, Users.lastname, Users.email FROM Posts INNER JOIN Users where Posts.user_id = Users.id`, callback)
+        connection.execute(`SELECT posts.title, posts.image_url, posts.content, posts.published_date, posts.id, Users.firstname, Users.lastname, Users.email 
+        FROM posts 
+        INNER JOIN Users 
+        Where posts.user_id = Users.id
+        ORDER BY posts.published_date DESC
+        `, callback)
     };
+
 }
 module.exports = Post;
