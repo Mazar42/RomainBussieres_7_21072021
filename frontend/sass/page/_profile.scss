@@ -1,8 +1,12 @@
 .profile-btns{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     .comment-btn{
         width: 50%;
     }
+}
+
+.profile{
+    text-align: center;
 }

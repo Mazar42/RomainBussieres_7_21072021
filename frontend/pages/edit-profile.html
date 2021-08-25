@@ -24,19 +24,16 @@
             <div class="signup-form">
                 <h1>Modifier mon profil</h1>
                 <div class="post-card">
-                    <form>
+                    <form id="edit-form">
     
-                        <label for="lname">Nom d'utilisateur :</label>
+                        <label for="fname">Prénom :</label>
+                        <input type="text" id="fname" name="lname" value=""><br><br>
+
+                        <label for="lname">Nom :</label>
                         <input type="text" id="lname" name="lname" value=""><br><br>
-    
-                        <label for="email-address">Adresse email :</label>
-                        <input type="email" name ="email-address" id="email" aria-describedby="emailHelp" placeholder="exemple@email.com" value="">
-                        <small id="emailHelp" class="form-text"></small><br><br>
-                      
-                        <label for="password">Mot de passe :</label>
-                        <input type="password" name="password" id="password" value=""><br><br>
+
                     
-                    <div><button type="submit" class="btnstyle-comment">Enregistrer les modifications</button></div>
+                    <div><button type="submit" class="btn-modify-profile">Enregistrer les modifications</button></div>
                 </form>
                 </div>
             </div>
@@ -44,5 +41,6 @@
     </section>
     
     <script src="https://kit.fontawesome.com/ec342d9b50.js" crossorigin="anonymous"></script>
+    <script src="../scripts/edit-profile.js"></script>
 </body>
 </html>

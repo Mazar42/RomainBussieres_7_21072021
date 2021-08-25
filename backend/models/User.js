@@ -16,7 +16,8 @@ class User {
     };
 
     static modify(req, callback) {
-        connection.execute(`UPDATE Users SET firstname = ?, lastname = ? WHERE id = ?`, [req.body.firstname, req.body.lastname, req.body.id], callback)
+        const userId = getUserId(req);
+        connection.execute(`UPDATE Users SET firstname = ?, lastname = ? WHERE id = ?`, [req.body.firstname, req.body.lastname, userId], callback)
     };
 
     static getOne(req, callback) {
