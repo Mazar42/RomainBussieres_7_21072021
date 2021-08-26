@@ -34,7 +34,6 @@ const sendData = () => {
         })
         .then(response => response.json())
         .then(data => {
-            alert('Votre poste est en ligne !');
             window.location.href = './wall.html';
         })
         .catch(error => console.error(error));

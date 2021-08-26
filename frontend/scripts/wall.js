@@ -1,12 +1,10 @@
-// --Comments--
-
-// Display
-
 //function to help convert time and date
 function reverseString(str) {
     return str.split("-").reverse().join("-");
 };
 
+
+//deletes on page
 function handleDeleteCommentButton(event) {
     const token = localStorage.getItem('token');
     const commentId = event.target.id.split('-').pop();
@@ -38,6 +36,7 @@ function handleDeletePostButton(event) {
         .catch(error => console.error(error));
 }
 
+// comments section
 function showOrHideDeleteButtonOnComment(comment) {
     const user = JSON.parse(localStorage.getItem('user'));
     if (comment.user_id === parseInt(user.id) || user.isAdmin === 1) {
@@ -56,7 +55,6 @@ const displayComments = (id) => {
         let splittedDate = timeAndDate.split("T");
         let date = reverseString(splittedDate[0]);
         let time = splittedDate[1].split(".")[0];
-
         //display comments
         commentSection.innerHTML +=
             `<div class="comment-card">
@@ -91,6 +89,9 @@ function validate(event) {
         .catch(error => console.error(error));
 }
 
+
+//handle posts
+
 let posts;
 let postSection = document.getElementById('posts-section');
 
@@ -121,6 +122,7 @@ const fetchPosts = async() => {
 
         //Display posts
         let currentPostId = post.id;
+        console.log(post);
         comments = await fetch(`http://localhost:3000/api/posts/${currentPostId}/comments`, { headers: { 'Authorization': `Bearer ${token}` } }).then(res => res.json())
         postSection.innerHTML += `<div class="post-window">
         <figure class="post-card">

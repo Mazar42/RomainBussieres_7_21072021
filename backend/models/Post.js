@@ -29,10 +29,10 @@ class Post {
     };
 
     static getAll(callback) {
-        connection.execute(`SELECT posts.title, posts.image_url, posts.content, posts.published_date, posts.id, Users.firstname, Users.lastname, Users.email 
+        connection.execute(`SELECT posts.title, posts.user_id, posts.image_url, posts.content, posts.published_date, posts.id, users.firstname, users.lastname, users.email 
         FROM posts 
-        INNER JOIN Users 
-        Where posts.user_id = Users.id
+        INNER JOIN users 
+        Where posts.user_id = users.id
         ORDER BY posts.published_date DESC
         `, callback)
     };
